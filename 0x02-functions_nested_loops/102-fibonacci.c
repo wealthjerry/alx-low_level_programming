@@ -7,21 +7,15 @@
 
 int main(void)
 {
-int counter;
-int countto = 50;
-long a = 1;
-long b = 2;
-
-for (counter = 1; counter <= (countto / 2); counter++)
+long int i, x = 1, y = 2, sum = 0;
+for (i = 0; i < 49; i++)
 {
-printf("%li %li ", a, b);
-a += b;
-b += a;
+printf("%ld, ", x);
+sum = x + y;
+x = y;
+y = sum;
+if (i == 48)
+printf("%ld\n", x);
 }
-if (countto % 2 == 1)
-printf("%li", a);
-
-printf("\n");
-
 return (0);
 }
