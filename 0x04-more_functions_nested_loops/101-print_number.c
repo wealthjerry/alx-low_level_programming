@@ -8,30 +8,28 @@
 
 void print_number(int n)
 {
-unsigned int num, num2;
-int i;
-int aux = 1;
+int copy, nth, size = 1, ones = n % 10;
 
-if (n < 0)
+n /= 10;
+copy = n;
+if (ones < 0)
 {
-n = n * -1;
+ones *= -1, copy *= -1, n *= -1;
 _putchar('-');
 }
-num = n;
-num2 = num;
-if (num > 9)
+if (copy > 0)
 {
-while (num >= 10)
+while (copy / 10 != 0)
 {
-aux = aux * 10;
-num = num/10; 
+copy /= 10, size *= 10;
 }
-_putchar((num2 / aux)+'0');
-aux = aux / 10;
-
-for (i = aux; i >= 1; i = i / 10)
-_putchar((num2 / i) % 10 + '0');
+while (size > 0)
+{
+nth = n / size;
+_putchar('0' + nth);
+n -= nth * size;
+size /= 10;
 }
-else
-_putchar(num + '0');
+}
+_putchar('0' + ones);
 }
